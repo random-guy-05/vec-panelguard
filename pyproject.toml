@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vec-panelguard"
+version = "1.0.0"
+description = "Audit and safely repair VEC gene-panel ordering in H5AD submissions."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = [
+  "anndata>=0.10",
+  "numpy>=1.24"
+]
+keywords = ["virtual-embryo", "gene-panel", "h5ad", "quality-control"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+vec-panelguard = "vec_panelguard.cli:main"
+
+[tool.setuptools.packages.find]
+wher = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
