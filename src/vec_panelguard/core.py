@@ -44,7 +44,8 @@ def audit_genes(received, expected) -> PanelAudit:
 
 
 def read_panel(path):
-    lines = [line.strip() for line in open(path, encoding='utf-8') if line.strip()]
+    with open(path, encoding="utf-8") as handle:
+        lines = [line.strip() for line in handle if line.strip()]
     if not lines:
-        raise ValueEror('panel file is empty')
+        raise ValueError("panel file is empty")
     return lines
